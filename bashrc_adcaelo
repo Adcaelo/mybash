@@ -1,0 +1,159 @@
+#
+# Adcaelo upgrade
+#
+
+alias rld=". ~/.bashrc"
+
+alias wk="watch -n1 df -k"
+alias wh="watch -n1 df -h"
+
+alias vim="vim -b"
+alias viim="vim +NERDTree"
+
+function ctm {
+    echo "Coping file content to middle mouse"
+    cat $1 | xclip -i
+}
+function ctc {
+    echo "Coping file content to clipboard"
+    cat $1 | xclip -i -selection clipboard
+}
+
+#alias fname='find -follow -name'
+function fname {
+    # 2 args
+    if [ $# -eq 2 ]
+    then
+        echo 'find '$1' -follow -type f -name "'$2'"'
+        find $1 -follow -type f -name "$2"
+
+    # 1 args
+    elif [ $# -eq 1 ]
+    then
+        echo 'find ./ -follow -type f -name "'$1'"'
+        find ./ -follow -type f -name "$1"
+
+    # no args
+    else
+        echo 'find ARG1 -follow -type f -name "ARG2"'
+    fi
+}
+
+function fff {
+
+    # 3 args
+    if [ $# -eq 3 ]
+    then
+        echo 'find '$1' -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "'$2'" -exec grep -niH "'$3'" {} \;'
+        find $1 -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "$2" -exec grep -niH "$3" {} \;
+
+    # 2 args
+    elif [ $# -eq 2 ]
+    then
+        echo 'find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "'$1'" -exec grep -niH "'$2'" {} \;'
+        find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "$1" -exec grep -niH "$2" {} \;
+
+    # 1 args
+    elif [ $# -eq 1 ]
+    then
+        echo 'find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "*.*" -exec grep -niH "'$1'" {} \;'
+        find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "*.*" -exec grep -niH "$1" {} \;
+
+    # no args
+    else
+        echo 'find ARG1 -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "ARG2" -exec grep -niH "'ARG3'" {} \;'
+    fi
+}
+
+function fff_unique {
+
+    # 3 args
+    if [ $# -eq 3 ]
+    then
+        find $1 -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "$2" -exec grep -niH "$3" {} \; > /tmp/aaa ; awk -F":" '{print $1}' /tmp/aaa > /tmp/bbb ; awk '!seen[$0]++' /tmp/bbb ; rm /tmp/aaa /tmp/bbb
+
+    # 2 args
+    elif [ $# -eq 2 ]
+    then
+        find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "$1" -exec grep -niH "$2" {} \; > /tmp/aaa ; awk -F":" '{print $1}' /tmp/aaa > /tmp/bbb ; awk '!seen[$0]++' /tmp/bbb ; rm /tmp/aaa /tmp/bbb
+
+    # 1 args
+    elif [ $# -eq 1 ]
+    then
+        find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "*.*" -exec grep -niH "$1" {} \; > /tmp/aaa ; awk -F":" '{print $1}' /tmp/aaa > /tmp/bbb ; awk '!seen[$0]++' /tmp/bbb ; rm /tmp/aaa /tmp/bbb
+
+    fi
+}
+
+function fblade {
+    echo "find resources/views/ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -name \"*.blade.php\" -exec grep -niH \"$1\" {} \;"
+    find resources/views/ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "*.blade.php" -exec grep -niH "$1" {} \;
+}
+
+
+function cmd() {
+    date > /tmp/cmd_date && $1 && cat /tmp/cmd_date && date
+}
+
+function dropalltables() {
+    if [ $# -eq 5 ]
+    then
+        echo "mysqldump -u$1 -p$2 -h$3 --add-drop-table --no-data $4 | grep -e '^DROP \| FOREIGN_KEY_CHECKS' | tee $5"
+        mysqldump -u$1 -p$2 -h$3 --add-drop-table --no-data $4 | grep -e '^DROP \| FOREIGN_KEY_CHECKS' | tee $5
+    else
+        echo "5 Args : bdd_user bdd_pwd bdd_host bdd_db export_file"
+    fi
+}
+
+alias cls="colorls"
+alias cll="colorls -1"
+alias clsr="colorls -r"
+
+
+# Conversion d'un fichier .md en .pdf
+# md_to_pdf monfichier
+# => monfichier.md ==> monfichier.pdf
+#
+# what to install ?
+#   sudo apt install pandoc
+#   sudo apt-get install texlive-latex-base
+#   sudo apt-get install texlive-fonts-recommended
+#   sudo apt-get install texlive-fonts-extra
+#   sudo apt-get install texlive-latex-extra
+# 
+function md_to_pdf() {
+    # 2 args
+    if [ $# -eq 2 ]
+    then
+        echo "pandoc $1 -o $2"
+        pandoc $1 -o $2
+
+    # 1 args
+    elif [ $# -eq 1 ]
+    then
+        echo "pandoc $1.md -o $1.pdf"
+        pandoc $1.md -o $1.pdf
+
+    fi
+}
+
+# grep recursif
+function grr() {
+
+    # 3 args
+    if [ $# -eq 3 ]
+    then
+        grep --include=\$2 -rl "$3" $1
+
+    # 2 args
+    elif [ $# -eq 2 ]
+    then
+        grep --include=\$1 -rl "$2"
+
+    # 1 args
+    elif [ $# -eq 1 ]
+    then
+        grep --include=\*.* -rl "$1"
+
+    fi
+}

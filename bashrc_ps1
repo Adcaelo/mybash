@@ -1,0 +1,1 @@
+PS1="${Green}Adcaelo${Color_Off}~${Yellow}\u@\h ${Cyan}\w ${IRed}\`parse_git_branch\`${Color_Off}$ "

@@ -1,0 +1,4 @@
+#Spécifique machine
+
+alias dual="sh /home/come/.screenlayout/dual.sh"
+alias integre="sh /home/come/.screenlayout/integre.sh"
