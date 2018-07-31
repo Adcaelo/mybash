@@ -52,5 +52,6 @@ alias site="cd ~/web/site/"
 alias payment="cd ~/web/payment/"
 alias cloud="cd ~/web/cloud"
 alias admin="cd ~/web/admin"
+alias invoice="cd ~/web/invoice"
 
 alias ggg="gulp"

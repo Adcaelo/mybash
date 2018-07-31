@@ -448,3 +448,6 @@ let g:signify_vcs_list = ['git']
 
 " ouvrir le prochain buffer dans un nouveau split
 map <F6> <ESC>:sp <bar> n<CR>
+
+
+" let g:switch_mapping = "gs" "default value toogle boolean

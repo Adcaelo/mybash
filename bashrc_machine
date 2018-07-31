@@ -2,3 +2,7 @@
 
 alias dual="sh /home/come/.screenlayout/dual.sh"
 alias integre="sh /home/come/.screenlayout/integre.sh"
+
+if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
+  PATH="$PATH:$HOME/.config/composer/vendor/bin"
+fi
