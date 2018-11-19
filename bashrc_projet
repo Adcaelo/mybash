@@ -46,6 +46,8 @@ function git_cleanup_all {
 alias artisan="php artisan -vvv"
 alias tinker="artisan tinker"
 
+alias monsql="mysql -uroot '-proot123!Root'"
+
 alias web="cd ~/web/"
 alias www="cd ~/web/www/"
 alias site="cd ~/web/site/"
@@ -55,3 +57,7 @@ alias admin="cd ~/web/admin"
 alias invoice="cd ~/web/invoice"
 
 alias ggg="gulp"
+
+
+alias iban="echo 'FR1420041010050500013M02606' | xclip -i -selection clipboard"
+alias siret="echo '53339106600024' | xclip -i -selection clipboard"

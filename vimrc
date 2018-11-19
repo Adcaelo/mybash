@@ -451,3 +451,5 @@ map <F6> <ESC>:sp <bar> n<CR>
 
 
 " let g:switch_mapping = "gs" "default value toogle boolean
+
+so ~/.vim/plugins.vim

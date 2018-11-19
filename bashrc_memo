@@ -40,3 +40,38 @@ function memo() {
     echo "ctrl + z      =>      bg     =>     disown -h %"
     echo "c'est tout bon !"
 }
+
+
+function reset_mysql_password() {
+
+echo <<'help'
+    # 1. Stop Mysql and Restart without user controls
+    sudo /etc/init.d/mysql stop # stop mysql service
+    sudo mysqld_safe --skip-grant-tables & # start mysql without password
+    # enter -> go
+    mysql -uroot # connect to mysql
+
+    # 2. Reset MySQL password
+    use mysql; # use mysql table
+    update user set authentication_string=PASSWORD("root123!Root") where User='root'; # update password to nothing
+    update user set plugin="mysql_native_password" where User='root'; # set password resolving to default mechanism for root user
+
+    flush privileges;
+    quit;
+
+
+    # 3. Redémarrage et connexion de test
+    sudo /etc/init.d/mysql stop
+    sudo /etc/init.d/mysql start # reset mysql
+    mysql -uroot '-proot123!Root' # try login to database
+
+
+    # Help.
+        # Socket Issue
+        sudo mkdir -p /var/run/mysqld; sudo chown mysql /var/run/mysqld
+
+        # Redémarrage => KILL THEM ALL
+        ps  -ef | grep mysql
+        kill -9 XXXX
+endhelp
+}

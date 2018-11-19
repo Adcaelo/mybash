@@ -4,11 +4,16 @@
 
 alias rld=". ~/.bashrc"
 
+alias kimsufi="ssh adcaelo@5.196.72.223"
+
 alias wk="watch -n1 df -k"
 alias wh="watch -n1 df -h"
 
 alias vim="vim -b"
 alias viim="vim +NERDTree"
+
+alias vimgit="vim \`git ls-files -m\`"
+
 
 function ctm {
     echo "Coping file content to middle mouse"
