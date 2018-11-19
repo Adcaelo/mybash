@@ -13,7 +13,6 @@ call vundle#begin()
 " Plugin 'terryma/vim-multiple-cursors'
 " Plugin 'tpope/vim-eunuch'
 " Plugin 'tpope/vim-surround'
-" Plugin 'w0rp/ale'
 
 
 Plugin 'adcaelo/adcaelo-vim'
@@ -49,6 +48,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'docteurklein/vim-symfony'
 Plugin 'evidens/vim-twig'
 Plugin 'posva/vim-vue'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 
