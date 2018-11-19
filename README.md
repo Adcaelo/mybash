@@ -16,4 +16,4 @@ Nothing serious
 
 --
 
-ToDo : récupérer le repo, executer init.sh
+ToDo : récupérer le repo, executer init.sh, lancer :PluginInstall sur VIM
