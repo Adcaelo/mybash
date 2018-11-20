@@ -3,18 +3,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Plugin 'VundleVim/Vundle.vim'
-" Plugin 'airblade/vim-gitgutter'
-" Plugin 'editorconfig/editorconfig-vim'
-" Plugin 'itchyny/lightline.vim'
-" Plugin 'junegunn/fzf'
-" Plugin 'junegunn/fzf.vim'
-" Plugin 'mattn/emmet-vim'
-" Plugin 'scrooloose/nerdtree'
-" Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'tpope/vim-eunuch'
-" Plugin 'tpope/vim-surround'
-
-
 Plugin 'adcaelo/adcaelo-vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'kien/ctrlp.vim'
@@ -49,7 +37,14 @@ Plugin 'docteurklein/vim-symfony'
 Plugin 'evidens/vim-twig'
 Plugin 'posva/vim-vue'
 Plugin 'w0rp/ale'
+Plugin 'mattn/emmet-vim'
+" Plugin 'tpope/vim-eunuch'             "Unix shell commands... pas besoin pour le moment
+
+
 
 call vundle#end()
 
 filetype plugin indent on
+
+
+" Commet installer déjà ?? avec :PluginInstall
