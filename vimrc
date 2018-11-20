@@ -457,4 +457,7 @@ nmap <F8> :TagbarToggle<CR>
 
 " let g:switch_mapping = "gs" "default value toogle boolean
 
+" Ignore vendors and storage
+set wildignore+=*/vendor/*,*/node_modules/*
+
 so ~/.vim/plugins.vim
