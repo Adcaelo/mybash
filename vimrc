@@ -449,6 +449,11 @@ let g:signify_vcs_list = ['git']
 " ouvrir le prochain buffer dans un nouveau split
 map <F6> <ESC>:sp <bar> n<CR>
 
+" Trouver le fichier actuel dans NERDTree
+nmap <F7> :NERDTreeFind<CR>
+
+" Afficher les tags
+nmap <F8> :TagbarToggle<CR>
 
 " let g:switch_mapping = "gs" "default value toogle boolean
 

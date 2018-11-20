@@ -16,4 +16,16 @@ Nothing serious
 
 --
 
-ToDo : récupérer le repo, executer init.sh, lancer :PluginInstall sur VIM
+ToDo :
+
+    * Récupérer le repo
+
+    * Executer init.sh
+    
+    * Installer ctags :
+
+```
+sudo apt-get install exuberant-ctags
+```
+
+    * Lancer :PluginInstall sur VIM
