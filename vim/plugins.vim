@@ -39,6 +39,9 @@ Plugin 'posva/vim-vue'
 Plugin 'w0rp/ale'
 Plugin 'mattn/emmet-vim'
 " Plugin 'tpope/vim-eunuch'             "Unix shell commands... pas besoin pour le moment
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'majutsushi/tagbar'
 
 
 
