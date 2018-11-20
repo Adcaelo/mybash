@@ -18,27 +18,27 @@ Nothing serious
 
 ToDo :
 
-    * Récupérer le repo dans home
+Récupérer le repo dans home
 
 ```
 cd ~
 git clone git@github.com:Adcaelo/mybash.git
 ```
 
-    * Executer init.sh
+Executer init.sh
 
 ```
 cd mybash
 ./init.sh
 ```
     
-    * Installer ctags :
+Installer ctags :
 
 ```
 sudo apt-get install exuberant-ctags
 ```
 
-    * Lancer VIM et executer la commande :PluginInstall
+Lancer VIM et executer la commande :PluginInstall
 
 ```
 vim
