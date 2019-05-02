@@ -42,22 +42,43 @@ function git_cleanup_all {
     fi
 }
 
+function vmig {
+    vim database/migrations/$(ls -t database/migrations/ | head -n1)
+}
+
 
 alias artisan="php artisan -vvv"
 alias tinker="artisan tinker"
 
+alias laravel_clean="artisan config:clear ; php artisan cache:clear ; php artisan route:clear ; php artisan view:clear"
+
 alias monsql="mysql -uroot '-proot123!Root'"
 
 alias web="cd ~/web/"
-alias www="cd ~/web/www/"
-alias site="cd ~/web/site/"
-alias payment="cd ~/web/payment/"
-alias cloud="cd ~/web/cloud"
-alias admin="cd ~/web/admin"
+alias www="cd ~/web/digital-avocat/www/"
+alias site="cd ~/web/digital-avocat/site/"
+alias payment="cd ~/web/digital-avocat/payment/"
+alias cloud="cd ~/web/digital-avocat/cloud"
+alias admin="cd ~/web/digital-avocat/admin"
 alias invoice="cd ~/web/invoice"
-
-alias ggg="gulp"
-
 
 alias iban="echo 'FR1420041010050500013M02606' | xclip -i -selection clipboard"
 alias siret="echo '53339106600024' | xclip -i -selection clipboard"
+
+function pipeline {
+    
+    echo ""
+    echo "npm run lint"
+    npm run lint
+    
+    echo ""
+    echo ""
+    echo "composer fmt"
+    composer fmt
+    
+    # read -n 1 -s -r -p "Press any key to continue"
+    # echo ""
+    # echo ""
+    # echo "php unit"
+    # phpunit
+}

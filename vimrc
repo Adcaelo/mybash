@@ -403,7 +403,7 @@ if has('mouse')
   set mouse=a
 endif
 set list
-set listchars=tab:>-
+set listchars=tab:>-,nbsp:␣
 let NERDTreeShowHidden=1
 
 set statusline+=%#warningmsg#

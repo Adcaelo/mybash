@@ -23,6 +23,8 @@
     cd = diff --word-diff-regex=.
     # recommit dans le precedent commit sans changer le message
     oops = commit --amend --no-edit
+    stat = log --stat
+    lastedit = log --pretty=format: --name-only -n 1
 [color]
     diff = auto
     status = auto

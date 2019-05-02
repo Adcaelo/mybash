@@ -14,6 +14,8 @@ alias viim="vim +NERDTree"
 
 alias vimgit="vim \`git ls-files -m\`"
 
+alias lastcommit="git rev-parse HEAD | xclip && xclip -o"
+alias lastfiles="git show --name-only HEAD"
 
 function ctm {
     echo "Coping file content to middle mouse"
@@ -50,19 +52,19 @@ function fff {
     if [ $# -eq 3 ]
     then
         echo 'find '$1' -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "'$2'" -exec grep -niH "'$3'" {} \;'
-        find $1 -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "$2" -exec grep -niH "$3" {} \;
+              find $1   -follow -type f -not -path "./public/*" -not -path "./storage/*" -name  "$2"  -exec grep -niH  "$3" {} \;
 
     # 2 args
     elif [ $# -eq 2 ]
     then
         echo 'find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "'$1'" -exec grep -niH "'$2'" {} \;'
-        find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "$1" -exec grep -niH "$2" {} \;
+              find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name  "$1"  -exec grep -niH  "$2" {} \;
 
     # 1 args
     elif [ $# -eq 1 ]
     then
         echo 'find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "*.*" -exec grep -niH "'$1'" {} \;'
-        find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "*.*" -exec grep -niH "$1" {} \;
+              find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "*.*" -exec grep -niH  "$1" {} \;
 
     # no args
     else
@@ -92,7 +94,15 @@ function fff_unique {
 
 function fblade {
     echo "find resources/views/ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -name \"*.blade.php\" -exec grep -niH \"$1\" {} \;"
-    find resources/views/ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "*.blade.php" -exec grep -niH "$1" {} \;
+          find resources/views/ -follow -type f -not -path "./public/*"   -not -path  "./storage/*"  -name  "*.blade.php"  -exec grep -niH  "$1" {} \;
+}
+function fphp {
+    echo "find ./ -follow -type f -not -path \"./vendor/*\" -not -path \"./public/*\" -not -path \"./storage/*\" -name \"*.php\" -exec grep -niH \"$1\" {} \;"
+          find ./ -follow -type f -not -path "./vendor/*"   -not -path "./public/*"   -not -path  "./storage/*"  -name  "*.php"  -exec grep -niH  "$1" {} \;
+}
+function fphpapp {
+    echo "find app/ -follow -type f -not -path \"./vendor/*\" -not -path \"./public/*\" -not -path \"./storage/*\" -name \"*.php\" -exec grep -niH \"$1\" {} \;"
+          find app/ -follow -type f -not -path "./vendor/*"   -not -path "./public/*"   -not -path  "./storage/*"  -name  "*.php"  -exec grep -niH  "$1" {} \;
 }
 
 
