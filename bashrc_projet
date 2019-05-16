@@ -82,3 +82,42 @@ function pipeline {
     # echo "php unit"
     # phpunit
 }
+
+alias docker_isup="docker ps"                                                   # What is up 
+alias docker_up="cd ~/web/backoffice-payment && docker-compose up -d"           # UP
+alias docker_stop="cd ~/web/backoffice-payment && docker-compose stop -d"       # STOP
+# alias docker_down="cd ~/web/backoffice-payment && docker-compose down -d"     # ERASE
+alias docker_sh="docker exec -it backoffice-payment sh"                         # Docker Prompt SH
+alias docker_ex="docker exec backoffice-payment "                               # Docker exec cmd
+
+function docker_help()
+{
+    echo "What is up"
+    echo "alias = docker_isup"
+    echo "command = docker ps"
+    echo ""
+
+    echo "Start docker"
+    echo "alias = docker_up"
+    echo "command = docker-compose up -d"
+    echo ""
+
+    echo "Stop docker"
+    echo "alias = docker_stop"
+    echo "command = docker-compose stop -d"
+    echo ""
+
+    echo "Stop and erase docker"
+    echo "alias = docker_down"
+    echo "command = docker-compose down -d"
+    echo ""
+
+    echo "Gimme an SH please"
+    echo "alias = docker_sh"
+    echo "command = docker exec -it backoffice-payment sh"
+    echo ""
+
+    echo "Execute some commands"
+    echo "alias = docker_ex"
+    echo "command = docker exec backoffice-payment"
+}

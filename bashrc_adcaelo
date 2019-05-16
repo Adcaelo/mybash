@@ -51,24 +51,24 @@ function fff {
     # 3 args
     if [ $# -eq 3 ]
     then
-        echo 'find '$1' -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "'$2'" -exec grep -niH "'$3'" {} \;'
-              find $1   -follow -type f -not -path "./public/*" -not -path "./storage/*" -name  "$2"  -exec grep -niH  "$3" {} \;
+        echo 'find '$1' -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "'$2'" -exec grep -niH "'$3'" {} \;'
+              find $1   -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./nod_modules/*" -not -path "./vendor/*" -name  "$2"  -exec grep -niH  "$3" {} \;
 
     # 2 args
     elif [ $# -eq 2 ]
     then
         echo 'find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "'$1'" -exec grep -niH "'$2'" {} \;'
-              find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name  "$1"  -exec grep -niH  "$2" {} \;
+              find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name  "$1"  -exec grep -niH  "$2" {} \;
 
     # 1 args
     elif [ $# -eq 1 ]
     then
-        echo 'find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "*.*" -exec grep -niH "'$1'" {} \;'
-              find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "*.*" -exec grep -niH  "$1" {} \;
+        echo 'find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "*.*" -exec grep -niH "'$1'" {} \;'
+              find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "*.*" -exec grep -niH  "$1" {} \;
 
     # no args
     else
-        echo 'find ARG1 -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "ARG2" -exec grep -niH "'ARG3'" {} \;'
+        echo 'find ARG1 -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "ARG2" -exec grep -niH "'ARG3'" {} \;'
     fi
 }
 
@@ -77,32 +77,32 @@ function fff_unique {
     # 3 args
     if [ $# -eq 3 ]
     then
-        find $1 -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "$2" -exec grep -niH "$3" {} \; > /tmp/aaa ; awk -F":" '{print $1}' /tmp/aaa > /tmp/bbb ; awk '!seen[$0]++' /tmp/bbb ; rm /tmp/aaa /tmp/bbb
+        find $1 -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "$2" -exec grep -niH "$3" {} \; > /tmp/aaa ; awk -F":" '{print $1}' /tmp/aaa > /tmp/bbb ; awk '!seen[$0]++' /tmp/bbb ; rm /tmp/aaa /tmp/bbb
 
     # 2 args
     elif [ $# -eq 2 ]
     then
-        find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "$1" -exec grep -niH "$2" {} \; > /tmp/aaa ; awk -F":" '{print $1}' /tmp/aaa > /tmp/bbb ; awk '!seen[$0]++' /tmp/bbb ; rm /tmp/aaa /tmp/bbb
+        find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "$1" -exec grep -niH "$2" {} \; > /tmp/aaa ; awk -F":" '{print $1}' /tmp/aaa > /tmp/bbb ; awk '!seen[$0]++' /tmp/bbb ; rm /tmp/aaa /tmp/bbb
 
     # 1 args
     elif [ $# -eq 1 ]
     then
-        find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "*.*" -exec grep -niH "$1" {} \; > /tmp/aaa ; awk -F":" '{print $1}' /tmp/aaa > /tmp/bbb ; awk '!seen[$0]++' /tmp/bbb ; rm /tmp/aaa /tmp/bbb
+        find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "*.*" -exec grep -niH "$1" {} \; > /tmp/aaa ; awk -F":" '{print $1}' /tmp/aaa > /tmp/bbb ; awk '!seen[$0]++' /tmp/bbb ; rm /tmp/aaa /tmp/bbb
 
     fi
 }
 
 function fblade {
-    echo "find resources/views/ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -name \"*.blade.php\" -exec grep -niH \"$1\" {} \;"
-          find resources/views/ -follow -type f -not -path "./public/*"   -not -path  "./storage/*"  -name  "*.blade.php"  -exec grep -niH  "$1" {} \;
+    echo "find resources/views/ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -name \"*.blade.php\" -exec grep -niH \"$1\" {} \;"
+          find resources/views/ -follow -type f -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*"   -name  "*.blade.php"  -exec grep -niH  "$1" {} \;
 }
 function fphp {
-    echo "find ./ -follow -type f -not -path \"./vendor/*\" -not -path \"./public/*\" -not -path \"./storage/*\" -name \"*.php\" -exec grep -niH \"$1\" {} \;"
-          find ./ -follow -type f -not -path "./vendor/*"   -not -path "./public/*"   -not -path  "./storage/*"  -name  "*.php"  -exec grep -niH  "$1" {} \;
+    echo "find ./ -follow -type f -not -path \"./vendor/*\" -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -name \"*.php\" -exec grep -niH \"$1\" {} \;"
+          find ./ -follow -type f -not -path "./vendor/*"   -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*" -name  "*.php"  -exec grep -niH  "$1" {} \;
 }
 function fphpapp {
-    echo "find app/ -follow -type f -not -path \"./vendor/*\" -not -path \"./public/*\" -not -path \"./storage/*\" -name \"*.php\" -exec grep -niH \"$1\" {} \;"
-          find app/ -follow -type f -not -path "./vendor/*"   -not -path "./public/*"   -not -path  "./storage/*"  -name  "*.php"  -exec grep -niH  "$1" {} \;
+    echo "find app/ -follow -type f -not -path \"./vendor/*\" -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -name \"*.php\" -exec grep -niH \"$1\" {} \;"
+          find app/ -follow -type f -not -path "./vendor/*"   -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*" -name  "*.php"  -exec grep -niH  "$1" {} \;
 }
 
 
