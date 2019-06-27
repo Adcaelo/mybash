@@ -85,8 +85,8 @@ function pipeline {
 
 alias d_isup="docker ps"                                                   # What is up 
 alias d_up="cd ~/web/backoffice-payment && docker-compose up -d"           # UP
-alias d_stop="cd ~/web/backoffice-payment && docker-compose stop -d"       # STOP
-# alias d_down="cd ~/web/backoffice-payment && docker-compose down -d"     # ERASE
+alias d_stop="cd ~/web/backoffice-payment && docker-compose stop"       # STOP
+# alias d_down="cd ~/web/backoffice-payment && docker-compose down"     # ERASE
 alias d_sh="docker exec -it backoffice-payment sh"                         # Docker Prompt SH
 alias d_ex="docker exec backoffice-payment "                               # Docker exec cmd
 
@@ -104,12 +104,12 @@ function d_help()
 
     echo "Stop docker"
     echo "alias = d_stop"
-    echo "command = docker-compose stop -d"
+    echo "command = docker-compose stop"
     echo ""
 
     echo "Stop and erase docker"
     echo "alias = d_down"
-    echo "command = docker-compose down -d"
+    echo "command = docker-compose down"
     echo ""
 
     echo "Gimme an SH please"
