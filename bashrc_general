@@ -176,6 +176,8 @@ function push_what {
 alias gitmerged='git branch --merged'
 alias gitnomerged='git branch --no-merged'
 
+alias fap="git fetch -p && git pull"
+
 alias rrr='git fetch -p && git rebase -i remotes/origin/master'
 
 # enable programmable completion features (you don't need to enable

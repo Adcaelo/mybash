@@ -83,12 +83,18 @@ function pipeline {
     # phpunit
 }
 
-alias d_isup="docker ps"                                                   # What is up 
-alias d_up="cd ~/web/backoffice-payment && docker-compose up -d"           # UP
-alias d_stop="cd ~/web/backoffice-payment && docker-compose stop"       # STOP
-# alias d_down="cd ~/web/backoffice-payment && docker-compose down"     # ERASE
-alias d_sh="docker exec -it backoffice-payment sh"                         # Docker Prompt SH
-alias d_ex="docker exec backoffice-payment "                               # Docker exec cmd
+alias d_isup="docker ps"                            # What is up 
+alias d_up="docker-compose up -d"                   # UP
+alias d_stop="docker-compose stop"                  # STOP
+alias d_down="docker-compose down"                  # ERASE
+alias d_ex="docker exec -it "                       # Docker exec (with prompt)
+
+alias bop="docker exec -it backoffice-payment bash"
+alias da="docker exec -it digitalavocat_digitalavocat_1 bash"
+alias da_mysql="docker exec -it digitalavocat_mysql_1 bash"
+
+
+alias ggg="gulp | tee /tmp/gulp ; grep Error /tmp/gulp"
 
 function d_help()
 {
