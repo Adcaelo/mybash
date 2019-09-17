@@ -180,6 +180,9 @@ alias fap="git fetch -p && git pull"
 
 alias rrr='git fetch -p && git rebase -i remotes/origin/master'
 
+alias donotcommit='git update-index --assume-unchanged'
+alias recommit='git update-index --no-assume-unchanged'
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
