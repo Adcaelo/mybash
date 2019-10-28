@@ -92,6 +92,32 @@ function fff_unique {
     fi
 }
 
+function ffff {
+
+    # 3 args
+    if [ $# -eq 3 ]
+    then
+        echo 'find '$1' -follow -type f -name "'$2'" -exec grep -niH "'$3'" {} \;'
+              find $1   -follow -type f -name  "$2"  -exec grep -niH  "$3" {} \;
+
+    # 2 args
+    elif [ $# -eq 2 ]
+    then
+        echo 'find ./ -follow -type f -name "'$1'" -exec grep -niH "'$2'" {} \;'
+              find ./ -follow -type f -name  "$1"  -exec grep -niH  "$2" {} \;
+
+    # 1 args
+    elif [ $# -eq 1 ]
+    then
+        echo 'find ./ -follow -type f -name "*.*" -exec grep -niH "'$1'" {} \;'
+              find ./ -follow -type f -name "*.*" -exec grep -niH  "$1" {} \;
+
+    # no args
+    else
+        echo 'find ARG1 -follow -type f -name "ARG2" -exec grep -niH "'ARG3'" {} \;'
+    fi
+}
+
 function fblade {
     echo "find resources/views/ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -name \"*.blade.php\" -exec grep -niH \"$1\" {} \;"
           find resources/views/ -follow -type f -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*"   -name  "*.blade.php"  -exec grep -niH  "$1" {} \;
