@@ -130,6 +130,14 @@ function fphpapp {
     echo "find app/ -follow -type f -not -path \"./vendor/*\" -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -name \"*.php\" -exec grep -niH \"$1\" {} \;"
           find app/ -follow -type f -not -path "./vendor/*"   -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*" -name  "*.php"  -exec grep -niH  "$1" {} \;
 }
+function fjs {
+    echo "find ./ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -not -path \"./.dist/*\" -name \"*.js\" -exec grep -niH \"$1\" {} \;"
+          find ./ -follow -type f -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*"   -not -path "./.dist/*"   -name  "*.js"  -exec grep -niH  "$1" {} \;
+}
+function fvue {
+    echo "find ./ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -not -path \"./.dist/*\" -name \"*.vue\" -exec grep -niH \"$1\" {} \;"
+          find ./ -follow -type f -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*"   -not -path "./.dist/*"   -name  "*.vue"  -exec grep -niH  "$1" {} \;
+}
 
 
 function cmd() {

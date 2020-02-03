@@ -61,6 +61,7 @@ alias payment="cd ~/web/digital-avocat/payment/"
 alias cloud="cd ~/web/digital-avocat/cloud"
 alias admin="cd ~/web/digital-avocat/admin"
 alias invoice="cd ~/web/invoice"
+alias espace="cd ~/web/digital-avocat/espace-client"
 
 alias iban="echo 'FR1420041010050500013M02606' | xclip -i -selection clipboard"
 alias siret="echo '53339106600024' | xclip -i -selection clipboard"
@@ -92,6 +93,8 @@ alias d_ex="docker exec -it "                       # Docker exec (with prompt)
 alias bop="docker exec -it backoffice-payment bash"
 alias da="docker exec -it digitalavocat_digitalavocat_1 bash"
 alias da_mysql="docker exec -it digitalavocat_mysql_1 bash"
+
+alias init_test="cd tests/ && docker-compose up -d && cd .."
 
 
 alias ggg="gulp | tee /tmp/gulp ; grep Error /tmp/gulp"
