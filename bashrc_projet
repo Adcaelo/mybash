@@ -113,6 +113,24 @@ function git_paul()
 
 alias ggg="gulp | tee /tmp/gulp ; grep Error /tmp/gulp"
 
+function compil_prod()
+{
+    sh /home/come/web/digital-avocat/compil_prod/$1.sh $2
+
+    read -p "Déployer sur ppt ? [Y/n]" -n 1 -r
+    echo    # (optional) move to a new line
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        # do dangerous stuff
+        sh /home/come/web/digital-avocat/compil_prod/ppt.sh $1 $2
+    fi
+}
+
+function trackload()
+{
+    git log --oneline --no-merges $1..$2
+}
+
 function d_help()
 {
     echo "What is up"
