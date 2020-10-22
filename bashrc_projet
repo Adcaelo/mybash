@@ -90,7 +90,7 @@ alias d_stop="docker-compose stop"                  # STOP
 alias d_down="docker-compose down"                  # ERASE
 alias d_ex="docker exec -it "                       # Docker exec (with prompt)
 
-alias bop="docker exec -it backoffice-payment bash"
+alias bop="docker exec -it backoffice-payment sh"
 alias da="docker exec -it digitalavocat_digitalavocat_1 bash"
 alias da_mysql="docker exec -it digitalavocat_mysql_1 bash"
 

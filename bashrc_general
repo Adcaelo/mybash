@@ -176,6 +176,11 @@ function push_what {
 alias gitmerged='git branch --merged'
 alias gitnomerged='git branch --no-merged'
 
+function gitdeletetag {
+    git tag -d $1
+    git push origin :refs/tags/$1
+}
+
 alias fap="git fetch -p && git pull"
 
 alias rrr='git fetch -p && git rebase -i remotes/origin/master'

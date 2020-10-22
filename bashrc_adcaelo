@@ -46,6 +46,15 @@ function fname {
     fi
 }
 
+function memo {
+    cat ~/Documents/memo.txt
+
+    echo ""
+    echo ""
+    echo "~/Documents/memo.txt"
+
+}
+
 function fff {
 
     # 3 args
@@ -133,6 +142,10 @@ function fphpapp {
 function fjs {
     echo "find ./ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -not -path \"./.dist/*\" -name \"*.js\" -exec grep -niH \"$1\" {} \;"
           find ./ -follow -type f -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*"   -not -path "./.dist/*"   -name  "*.js"  -exec grep -niH  "$1" {} \;
+}
+function fscss {
+    echo "find ./ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -not -path \"./.dist/*\" -name \"*.scss\" -exec grep -niH \"$1\" {} \;"
+          find ./ -follow -type f -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*"   -not -path "./.dist/*"   -name  "*.scss"  -exec grep -niH  "$1" {} \;
 }
 function fvue {
     echo "find ./ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -not -path \"./.dist/*\" -name \"*.vue\" -exec grep -niH \"$1\" {} \;"
