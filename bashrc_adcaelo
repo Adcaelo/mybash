@@ -47,11 +47,11 @@ function fname {
 }
 
 function memo {
-    cat ~/Documents/memo.txt
+    cat ~/Documents/Mémo/memo.txt
 
     echo ""
     echo ""
-    echo "~/Documents/memo.txt"
+    echo "~/Documents/Mémo/memo.txt"
 
 }
 
