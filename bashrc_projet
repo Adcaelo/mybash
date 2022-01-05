@@ -1,6 +1,6 @@
 #Bashrc spécifique Projet
 
-git_envs=("cloud" "payment" "site" "www")
+git_envs=("www" "legacy" "autre")
 
 function ggit {
 
@@ -9,8 +9,8 @@ function ggit {
     for git_env in "${git_envs[@]}"
     do
         echo "${1^} de ${git_env^}"
-        echo "cd /mnt/LinuxData/web//g$git_env"
-        cd /mnt/LinuxData/web//g$git_env
+        echo "cd /mnt/LinuxData/web/$git_env"
+        cd /mnt/LinuxData/web/$git_env
         echo "git $@"
         git $@
         echo #new line
@@ -30,7 +30,7 @@ function git_cleanup_all {
         for git_env in "${git_envs[@]}"
         do
             echo "processing ${git_env^}"
-            cd /mnt/LinuxData/web//g$git_env
+            cd /mnt/LinuxData/web/$git_env
             git checkout master
             git fetch
             if [[ $(git branch --merged | egrep -v "(^\*|master)") ]]; then
@@ -52,18 +52,7 @@ alias tinker="artisan tinker"
 
 alias laravel_clean="artisan config:clear ; php artisan cache:clear ; php artisan route:clear ; php artisan view:clear"
 
-alias monsql="mysql -uroot '-proot123!Root'"
-
-alias web="cd /mnt/LinuxData/web/"
-alias www="cd /mnt/LinuxData/web/digital-avocat/www/"
-alias site="cd /mnt/LinuxData/web/digital-avocat/site/"
-alias payment="cd /mnt/LinuxData/web/digital-avocat/payment/"
-alias cloud="cd /mnt/LinuxData/web/digital-avocat/cloud"
-alias admin="cd /mnt/LinuxData/web/digital-avocat/admin"
-alias invoice="cd /mnt/LinuxData/web/invoice"
-alias espace="cd /mnt/LinuxData/web/digital-avocat/espace-client"
-
-alias hub="cd /mnt/LinuxData/web/dockers/hub"
+alias monsql="mysql -uroot '-proot'"
 
 alias iban="echo 'FR1420041010050500013M02606' | xclip -i -selection clipboard"
 alias siret="echo '53339106600024' | xclip -i -selection clipboard"
@@ -92,43 +81,15 @@ alias d_stop="docker-compose stop"                  # STOP
 alias d_down="docker-compose down"                  # ERASE
 alias d_ex="docker exec -it "                       # Docker exec (with prompt)
 
-alias bop="docker exec -it backoffice-payment sh"
-alias da="docker exec -it digitalavocat_digitalavocat_1 bash"
-alias da_mysql="docker exec -it digitalavocat_mysql_1 bash"
+alias bop="docker exec -it DOCKER_CONTAINER_NAME sh"
+alias da="docker exec -it DOCKER_CONTAINER_NAME bash"
+alias da_mysql="docker exec -it DOCKER_CONTAINER_NAME bash"
 
 alias sandbox="vim app/Console/Commands/AdcaeloSandbox.php"
 
 alias init_test="cd tests/ && docker-compose up -d && cd .."
 
-function git_paul()
-{
-    echo "Updating WWW"
-    cd /mnt/LinuxData/web//gdigital-avocat/www && git pull
-    echo "Updating Site"
-    cd /mnt/LinuxData/web//gdigital-avocat/site && git pull
-    echo "Updating Payment"
-    cd /mnt/LinuxData/web//gdigital-avocat/payment && git pull
-    echo "Updating Cloud"
-    cd /mnt/LinuxData/web//gdigital-avocat/cloud && git pull
-    echo "Updating Invoicer"
-    cd /mnt/LinuxData/web//ginvoice && git pull
-}
-
-
 alias ggg="gulp | tee /tmp/gulp ; grep Error /tmp/gulp"
-
-function compil_prod()
-{
-    sh /mnt/LinuxData/web//gdigital-avocat/compil_prod/$1.sh $2
-
-    read -p "Déployer sur ppt ? [Y/n]" -n 1 -r
-    echo    # (optional) move to a new line
-    if [[ $REPLY =~ ^[Yy]$ ]]
-    then
-        # do dangerous stuff
-        sh /mnt/LinuxData/web//gdigital-avocat/compil_prod/ppt.sh $1 $2
-    fi
-}
 
 function trackload()
 {
@@ -159,10 +120,10 @@ function d_help()
 
     echo "Gimme an SH please"
     echo "alias = d_sh"
-    echo "command = docker exec -it backoffice-payment sh"
+    echo "command = docker exec -it DOCKER_CONTAINER_NAME sh"
     echo ""
 
     echo "Execute some commands"
     echo "alias = d_ex"
-    echo "command = docker exec backoffice-payment"
+    echo "command = docker exec DOCKER_CONTAINER_NAME"
 }

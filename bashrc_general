@@ -195,6 +195,6 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-
+alias vi="vim"
 alias brc="vim ~/mybash/bashrc_projet"
 
