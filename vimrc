@@ -448,4 +448,8 @@ let g:signify_vcs_list = ['git']
 
 " let g:switch_mapping = "gs" "default value toogle boolean
 
+" navigate to previous / next buffer using ALT + arrow right/left
+nmap <M-LEFT> :bN<cr>
+nmap <M-RIGHT> :bn<cr>
+
 so ~/.vim/plugins.vim

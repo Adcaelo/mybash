@@ -1,10 +1,16 @@
 #Spécifique machine
 
-alias dual="sh /home/come/.screenlayout/dual.sh"
-alias integre="sh /home/come/.screenlayout/integre.sh"
-
 if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
   PATH="$PATH:$HOME/.config/composer/vendor/bin"
 fi
 
 PATH="./vendor/bin:$PATH"
+
+
+alias screen_inverted="xrandr -o inverted"
+alias screen_normal="xrandr -o normal"
+
+function mysqlroot {
+    echo "root123!Root"
+    mysql -uroot '-proot123!Root'
+}
