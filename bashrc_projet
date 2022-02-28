@@ -127,3 +127,7 @@ function d_help()
     echo "alias = d_ex"
     echo "command = docker exec DOCKER_CONTAINER_NAME"
 }
+
+
+#LocalNova
+alias deploy-enzo="cd /home/platform/src/platform && sudo -H -u platform bash -c 'php vendor/bin/envoy run deploy'"

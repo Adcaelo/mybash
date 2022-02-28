@@ -50,7 +50,7 @@
 [core]
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
     editor = vim
-	excludesfile = /home/come/.gitignore_global
+	excludesfile = /home/adcaelo/.gitignore_global
 
 [remote]
     fetch = +refs/heads/*:refs/remotes/origin/*

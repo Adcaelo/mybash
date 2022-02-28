@@ -7,5 +7,6 @@ mv .vim old.vim
 ln -s mybash/vimrc .vimrc
 ln -s mybash/vim .vim
 
+ln -s mybash/gitignore_global .gitignore_global
 ln -s mybash/gitconfig .gitconfig
 
