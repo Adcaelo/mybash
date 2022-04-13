@@ -188,6 +188,8 @@ alias rrr='git fetch -p && git rebase -i remotes/origin/master'
 alias donotcommit='git update-index --assume-unchanged'
 alias recommit='git update-index --no-assume-unchanged'
 
+alias bigfiles='find . -type f -printf "%s\t%p\n" | sort -n | tail -6'
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).

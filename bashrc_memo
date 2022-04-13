@@ -5,6 +5,10 @@ function removeduplicate() {
     echo "awk '!seen[$0]++' FILE_IN > FILE_OUT"
 }
 
+function wgetpost() {
+    wget --post-data 'email=bob@morane.fr&password=azeazeaze' https://mon-site.com/api/v1/auth
+}
+
 function screen_info() {
     # Black        0;30     Dark Gray     1;30      Red          0;31     Light Red     1;31
     # Green        0;32     Light Green   1;32      Brown/Orange 0;33     Yellow        1;33
