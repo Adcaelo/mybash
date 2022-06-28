@@ -12,5 +12,5 @@ alias screen_normal="xrandr -o normal"
 
 function mysqlroot {
     echo "root123!Root"
-    mysql -uroot '-proot123!Root'
+    mysql -A -uroot '-proot123!Root'
 }

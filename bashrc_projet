@@ -47,11 +47,6 @@ function vmig {
 }
 
 
-alias artisan="php artisan -vvv"
-alias tinker="artisan tinker"
-
-alias laravel_clean="artisan config:clear ; php artisan cache:clear ; php artisan route:clear ; php artisan view:clear"
-
 alias monsql="mysql -uroot '-proot'"
 
 alias iban="echo 'FR1420041010050500013M02606' | xclip -i -selection clipboard"
@@ -130,4 +125,14 @@ function d_help()
 
 
 #LocalNova
-alias deploy-enzo="cd /home/platform/src/platform && sudo -H -u platform bash -c 'php vendor/bin/envoy run deploy'"
+function artisan() {
+    cd /home/platform/src/platform
+    sudo -H -u platform bash -c 'php artisan '$@''
+}
+
+function envoy() {
+    cd /home/platform/src/platform
+    sudo -H -u platform bash -c 'php vendor/bin/envoy run '$@''
+}
+
+alias deploy="/home/platform/src/scripts/Local/deploy.sh"
