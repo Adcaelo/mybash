@@ -14,3 +14,6 @@ function mysqlroot {
     echo "root123!Root"
     mysql -A -uroot '-proot123!Root'
 }
+
+alias vpnon="nmcli con up id Localnova"
+alias vpnoff="nmcli con down id Localnova"

@@ -136,3 +136,9 @@ function envoy() {
 }
 
 alias deploy="/home/platform/src/scripts/Local/deploy.sh"
+
+alias build="php artisan optimize && composer install && pnpm i && pnpm build"
+
+alias dev="php artisan optimize && composer install && pnpm i && pnpm build && pnpm run dev:https"
+
+alias tinker="php artisan tinker"

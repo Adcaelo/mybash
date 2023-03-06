@@ -197,6 +197,16 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
+alias snapupdate="sudo snap refresh"
+
 alias vi="vim"
 alias brc="vim ~/mybash/bashrc_projet"
 
+function dush {
+    echo "du -sk * | sort -n | awk '{print \$2}' | xargs -ia du -hs \"a\""
+    du -sk * | sort -n | awk '{print $2}' | xargs -ia du -hs "a"
+}
+
+function agrep {
+    alias | grep $1
+}
