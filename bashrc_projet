@@ -142,3 +142,7 @@ alias build="php artisan optimize && composer install && pnpm i && pnpm build"
 alias dev="php artisan optimize && composer install && pnpm i && pnpm build && pnpm run dev:https"
 
 alias tinker="php artisan tinker"
+
+alias platform="cd /home/adcaelo/src/localnova/platform"
+alias legacy="cd /home/adcaelo/src/localnova/legacy"
+alias client="cd /home/adcaelo/src/localcorp/client"

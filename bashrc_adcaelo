@@ -253,3 +253,8 @@ alias dirsize="du -sh ./* | sort -h"
 # sudo curl -L https://raw.githubusercontent.com/will8211/unimatrix/master/unimatrix.py -o /usr/local/bin/unimatrix
 # sudo chmod a+rx /usr/local/bin/unimatrix
 alias matrice="unimatrix -s 95"
+
+
+alias batall="upower -d"
+alias batmouse="upower -i /org/freedesktop/UPower/devices/mouse_dev_FE_E6_25_15_A4_1D"
+alias batmousepc="upower -i /org/freedesktop/UPower/devices/mouse_dev_FE_E6_25_15_A4_1D | grep percentage"
