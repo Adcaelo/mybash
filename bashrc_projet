@@ -146,3 +146,5 @@ alias tinker="php artisan tinker"
 alias platform="cd /home/adcaelo/src/localnova/platform"
 alias legacy="cd /home/adcaelo/src/localnova/legacy"
 alias client="cd /home/adcaelo/src/localcorp/client"
+
+alias localmonitor="/home/adcaelo/monitoring/monitorLocalNova.sh -du"

@@ -202,10 +202,12 @@ alias snapupdate="sudo snap refresh"
 alias vi="vim"
 alias brc="vim ~/mybash/bashrc_projet"
 
-function dush {
-    echo "du -sk * | sort -n | awk '{print \$2}' | xargs -ia du -hs \"a\""
-    du -sk * | sort -n | awk '{print $2}' | xargs -ia du -hs "a"
-}
+#function dush {
+#    echo "du -sk * | sort -n | awk '{print \$2}' | xargs -ia du -hs \"a\""
+#    du -sk * | sort -n | awk '{print $2}' | xargs -ia du -hs "a"
+#}
+
+alias dush="du -sh * | sort -h"
 
 function agrep {
     alias | grep $1
