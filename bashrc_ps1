@@ -1,0 +1,6 @@
+PS1="${Green}Adcaelo${Color_Off}~${Yellow}\u@\h ${Cyan}\w ${IRed}\`parse_git_branch\`${Color_Off}$ "
+
+
+function ps1withtime {
+    PS1="${Green}Adcaelo${Color_Off}~${Yellow}\$(date +%H:%M:%S) ${Cyan}\w ${IRed}\`parse_git_branch\`${Color_Off}$ "
+}

@@ -1,0 +1,1 @@
+PS1="${Green}\u${Color_Off}: ${Cyan}\w ${IRed}\`parse_git_branch\`${Color_Off}$ "

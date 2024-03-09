@@ -1,0 +1,10 @@
+# .bashrc
+
+source ~/mybash/git-completion.bash
+source ~/mybash/git-prompt.bash
+
+source ~/mybash/bashrc_general
+source ~/mybash/bashrc_machine
+source ~/mybash/bashrc_projet
+source ~/mybash/bashrc_adcaelo
+source ~/mybash/bashrc_ps1

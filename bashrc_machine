@@ -1,0 +1,20 @@
+#Spécifique machine
+
+if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
+  PATH="$PATH:$HOME/.config/composer/vendor/bin"
+fi
+
+PATH="./vendor/bin:$PATH"
+
+
+alias screen_inverted="xrandr -o inverted"
+alias screen_normal="xrandr -o normal"
+alias dualscreen="xrandr --output DP-1 --rotate normal --output eDP-1 --rotate inverted"
+
+function mysqlroot {
+    echo "root123!Root"
+    mysql -A -uroot '-proot123!Root'
+}
+
+alias vpnon="nmcli con up id Localnova"
+alias vpnoff="nmcli con down id Localnova"

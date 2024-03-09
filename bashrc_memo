@@ -1,0 +1,81 @@
+function removeaftercar() {
+    echo "awk -F\"CAR\" '{print $1}' FILE_IN > FILE_OUT"
+}
+function removeduplicate() {
+    echo "awk '!seen[$0]++' FILE_IN > FILE_OUT"
+}
+
+function wgetpost() {
+    wget --post-data 'email=bob@morane.fr&password=azeazeaze' https://mon-site.com/api/v1/auth
+}
+
+function screen_info() {
+    # Black        0;30     Dark Gray     1;30      Red          0;31     Light Red     1;31
+    # Green        0;32     Light Green   1;32      Brown/Orange 0;33     Yellow        1;33
+    # Blue         0;34     Light Blue    1;34      Purple       0;35     Light Purple  1;35
+    # Cyan         0;36     Light Cyan    1;36      Light Gray   0;37     White         1;37
+
+    RESET='\e[0m'
+
+    BOLD='\e[1m'
+    UNDERLINE='\e[4m'
+    BLINK='\e[5m'
+    INVERTED='\e[7m'
+
+    NC='\e[0m' # No Color
+    LBL='\e[0;34m'
+    LGR='\e[1;32m'
+
+    echo ""
+    echo -e "           ${LBL}Start a screen using : ${LGR}screen -S screen_name"
+    echo -e "           ${LBL}Detach from a screen using : ${LGR}<CTRL><a> + <d>"
+    echo -e "           ${LBL}Kill a screen from inside using : ${LGR}exit ${NC}or ${LGR}<CTRL><d>"
+    echo -e "           ${LBL}List all screens using : ${LGR}screen -ls"
+    echo -e "           ${LBL}Reattache a screen using : ${LGR}screen -r screen_name"
+    echo -e "           ${LBL}Join a screen using : ${LGR}screen -x screen_name"
+    echo ""
+}
+
+function memo() {
+    echo "vidage de cache système. (en root)"
+    echo "sync; echo 3 > /proc/sys/vm/drop_caches"
+    echo ""
+    echo "Mettre une commande en arrière plan pour se deconnecter sans couper le process :"
+    echo "ctrl + z      =>      bg     =>     disown -h %"
+    echo "c'est tout bon !"
+}
+
+
+function reset_mysql_password() {
+
+echo <<'help'
+    # 1. Stop Mysql and Restart without user controls
+    sudo /etc/init.d/mysql stop # stop mysql service
+    sudo mysqld_safe --skip-grant-tables & # start mysql without password
+    # enter -> go
+    mysql -uroot # connect to mysql
+
+    # 2. Reset MySQL password
+    use mysql; # use mysql table
+    update user set authentication_string=PASSWORD("root123!Root") where User='root'; # update password to nothing
+    update user set plugin="mysql_native_password" where User='root'; # set password resolving to default mechanism for root user
+
+    flush privileges;
+    quit;
+
+
+    # 3. Redémarrage et connexion de test
+    sudo /etc/init.d/mysql stop
+    sudo /etc/init.d/mysql start # reset mysql
+    mysql -uroot '-proot123!Root' # try login to database
+
+
+    # Help.
+        # Socket Issue
+        sudo mkdir -p /var/run/mysqld; sudo chown mysql /var/run/mysqld
+
+        # Redémarrage => KILL THEM ALL
+        ps  -ef | grep mysql
+        kill -9 XXXX
+endhelp
+}
