@@ -1,0 +1,69 @@
+[user]
+        name = Adcaelo
+        email = come.edeline@gmail.com
+
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    mg = merge
+    lg = log -p
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    lognames = log --name-only
+    logcouleurs = log --oneline --graph --decorate
+    ls = ls-files
+    # git diff comparaison mot par mots
+    wordiff = diff --word-diff
+    wd = diff --word-diff
+    # git diff comparaison lettre par lettres
+    chardiff = diff --word-diff-regex=.
+    cd = diff --word-diff-regex=.
+    # recommit dans le precedent commit sans changer le message
+    oops = commit --amend --no-edit
+    stat = log --stat
+    lastedit = log --pretty=format: --name-only -n 1
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
+    ui = true
+
+[color "status"]
+    added = green
+    changed = red bold
+    untracked = magenta bold
+
+[color "diff"]
+    whitespace = red reverse
+
+
+[color "branch"]
+    remote = yellow
+
+[branch]
+    autosetupmerge = true
+
+[core]
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    editor = vim
+	excludesfile = /home/adcaelo/.gitignore_global
+
+[remote]
+    fetch = +refs/heads/*:refs/remotes/origin/*
+
+[diff]
+    # Use better, descriptive initials (c, i, w) instead of a/b.
+    mnemonicPrefix = true
+    # Show renames/moves as such
+    renames = true
+
+[push]
+    # Default push should only push the current branch to its push target, regardless of its remote name
+    default = upstream
+
+[pull]
+	rebase = true
