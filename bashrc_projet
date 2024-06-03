@@ -1,0 +1,160 @@
+#Bashrc spécifique Projet
+
+git_envs=("www" "legacy" "autre")
+
+function ggit {
+
+    curr_dir=$(pwd)
+
+    for git_env in "${git_envs[@]}"
+    do
+        echo "${1^} de ${git_env^}"
+        echo "cd /mnt/LinuxData/web/$git_env"
+        cd /mnt/LinuxData/web/$git_env
+        echo "git $@"
+        git $@
+        echo #new line
+    done
+
+    cd $curr_dir
+}
+
+
+function git_cleanup_all {
+
+    echo "Cleaning all branches merged on master"
+    read -r -p "Are you sure? [y/N] " response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+    then
+
+        for git_env in "${git_envs[@]}"
+        do
+            echo "processing ${git_env^}"
+            cd /mnt/LinuxData/web/$git_env
+            git checkout master
+            git fetch
+            if [[ $(git branch --merged | egrep -v "(^\*|master)") ]]; then
+                git branch --merged | egrep -v "(^\*|master)" | xargs git branch -d
+            fi
+        done
+    else
+        echo "Cancelling"
+    fi
+}
+
+function vmig {
+    vim database/migrations/$(ls -t database/migrations/ | head -n1)
+}
+
+
+alias monsql="mysql -uroot '-proot'"
+
+alias iban="echo 'FR1420041010050500013M02606' | xclip -i -selection clipboard"
+alias siret="echo '53339106600024' | xclip -i -selection clipboard"
+
+function pipeline {
+    
+    echo ""
+    echo "npm run lint"
+    npm run lint
+    
+    echo ""
+    echo ""
+    echo "composer fmt"
+    composer fmt
+    
+    # read -n 1 -s -r -p "Press any key to continue"
+    # echo ""
+    # echo ""
+    # echo "php unit"
+    # phpunit
+}
+
+alias d_isup="docker ps"                            # What is up 
+alias d_up="docker-compose up -d"                   # UP
+alias d_stop="docker-compose stop"                  # STOP
+alias d_down="docker-compose down"                  # ERASE
+alias d_ex="docker exec -it "                       # Docker exec (with prompt)
+
+alias bop="docker exec -it DOCKER_CONTAINER_NAME sh"
+alias da="docker exec -it DOCKER_CONTAINER_NAME bash"
+alias da_mysql="docker exec -it DOCKER_CONTAINER_NAME bash"
+
+alias sandbox="vim app/Console/Commands/AdcaeloSandbox.php"
+
+alias init_test="cd tests/ && docker-compose up -d && cd .."
+
+alias ggg="gulp | tee /tmp/gulp ; grep Error /tmp/gulp"
+
+function trackload()
+{
+    git log --oneline --no-merges $1..$2
+}
+
+function d_help()
+{
+    echo "What is up"
+    echo "alias = d_isup"
+    echo "command = docker ps"
+    echo ""
+
+    echo "Start docker"
+    echo "alias = d_up"
+    echo "command = docker-compose up -d"
+    echo ""
+
+    echo "Stop docker"
+    echo "alias = d_stop"
+    echo "command = docker-compose stop"
+    echo ""
+
+    echo "Stop and erase docker"
+    echo "alias = d_down"
+    echo "command = docker-compose down"
+    echo ""
+
+    echo "Gimme an SH please"
+    echo "alias = d_sh"
+    echo "command = docker exec -it DOCKER_CONTAINER_NAME sh"
+    echo ""
+
+    echo "Execute some commands"
+    echo "alias = d_ex"
+    echo "command = docker exec DOCKER_CONTAINER_NAME"
+}
+
+
+#LocalNova
+function artisan() {
+    cd /home/platform/src/platform
+    sudo -H -u platform bash -c 'php artisan '$@''
+}
+
+function envoy() {
+    cd /home/platform/src/platform
+    sudo -H -u platform bash -c 'php vendor/bin/envoy run '$@''
+}
+
+alias deploy="/home/platform/src/scripts/Local/deploy.sh"
+
+alias build="php artisan optimize && composer install && pnpm i && pnpm build"
+
+alias buildd="pnpm build"
+
+alias dev="php artisan optimize && composer install && pnpm i && pnpm build && pnpm run dev:https"
+
+alias devv="pnpm run dev:https"
+
+alias tinker="php artisan tinker"
+
+alias platform="cd /home/adcaelo/src/localnova/platform"
+alias legacy="cd /home/adcaelo/src/localnova/legacy"
+alias client="cd /home/adcaelo/src/localcorp/client"
+
+alias localmonitor="/home/adcaelo/monitoring/monitorLocalNova.sh -du"
+
+alias wgon="sudo wg-quick up wg0"
+alias wgoff="sudo wg-quick down wg0"
+alias wgshow="sudo wg show"
+
+alias servelppc="cd ~/src/localnova/lppc && php artisan serve"

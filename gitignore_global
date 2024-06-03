@@ -1,0 +1,7 @@
+AdcaeloSandbox*.php
+server.cert
+server.key
+laravel.diff
+legacy.diff
+laravel.html
+legacy.html

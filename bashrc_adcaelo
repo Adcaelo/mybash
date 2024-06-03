@@ -1,0 +1,260 @@
+#
+# Adcaelo upgrade
+#
+
+alias rld=". ~/.bashrc"
+
+alias kimsufi="ssh adcaelo@5.196.72.223"
+
+alias wk="watch -n1 df -k"
+alias wh="watch -n1 df -h"
+
+alias vim="vim -b"
+alias viim="vim +NERDTree"
+
+alias vimgit="vim \`git ls-files -m\`"
+
+alias lastcommit="git rev-parse HEAD | xclip && xclip -o"
+alias lastfiles="git show --name-only HEAD"
+
+function ctm {
+    echo "Coping file content to middle mouse"
+    cat $1 | xclip -i
+}
+function ctc {
+    echo "Coping file content to clipboard"
+    cat $1 | xclip -i -selection clipboard
+}
+
+#alias fname='find -follow -name'
+function fname {
+    # 2 args
+    if [ $# -eq 2 ]
+    then
+        echo 'find '$1' -follow -type f -name "'$2'"'
+        find $1 -follow -type f -name "$2"
+
+    # 1 args
+    elif [ $# -eq 1 ]
+    then
+        echo 'find ./ -follow -type f -name "'$1'"'
+        find ./ -follow -type f -name "$1"
+
+    # no args
+    else
+        echo 'find ARG1 -follow -type f -name "ARG2"'
+    fi
+}
+
+function memo {
+    cat ~/Documents/Mémo/memo.txt
+
+    echo ""
+    echo ""
+    echo "~/Documents/Mémo/memo.txt"
+
+}
+
+function fff {
+
+    # 3 args
+    if [ $# -eq 3 ]
+    then
+        echo 'find '$1' -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "'$2'" -exec grep -niH "'$3'" {} \;'
+              find $1   -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./nod_modules/*" -not -path "./vendor/*" -name  "$2"  -exec grep -niH  "$3" {} \;
+
+    # 2 args
+    elif [ $# -eq 2 ]
+    then
+        echo 'find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -name "'$1'" -exec grep -niH "'$2'" {} \;'
+              find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name  "$1"  -exec grep -niH  "$2" {} \;
+
+    # 1 args
+    elif [ $# -eq 1 ]
+    then
+        echo 'find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "*.*" -exec grep -niH "'$1'" {} \;'
+              find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "*.*" -exec grep -niH  "$1" {} \;
+
+    # no args
+    else
+        echo 'find ARG1 -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "ARG2" -exec grep -niH "'ARG3'" {} \;'
+    fi
+}
+
+function fff_unique {
+
+    # 3 args
+    if [ $# -eq 3 ]
+    then
+        find $1 -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "$2" -exec grep -niH "$3" {} \; > /tmp/aaa ; awk -F":" '{print $1}' /tmp/aaa > /tmp/bbb ; awk '!seen[$0]++' /tmp/bbb ; rm /tmp/aaa /tmp/bbb
+
+    # 2 args
+    elif [ $# -eq 2 ]
+    then
+        find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "$1" -exec grep -niH "$2" {} \; > /tmp/aaa ; awk -F":" '{print $1}' /tmp/aaa > /tmp/bbb ; awk '!seen[$0]++' /tmp/bbb ; rm /tmp/aaa /tmp/bbb
+
+    # 1 args
+    elif [ $# -eq 1 ]
+    then
+        find ./ -follow -type f -not -path "./public/*" -not -path "./storage/*" -not -path "./node_modules/*" -not -path "./vendor/*" -name "*.*" -exec grep -niH "$1" {} \; > /tmp/aaa ; awk -F":" '{print $1}' /tmp/aaa > /tmp/bbb ; awk '!seen[$0]++' /tmp/bbb ; rm /tmp/aaa /tmp/bbb
+
+    fi
+}
+
+function ffff {
+
+    # 3 args
+    if [ $# -eq 3 ]
+    then
+        echo 'find '$1' -follow -type f -name "'$2'" -exec grep -niH "'$3'" {} \;'
+              find $1   -follow -type f -name  "$2"  -exec grep -niH  "$3" {} \;
+
+    # 2 args
+    elif [ $# -eq 2 ]
+    then
+        echo 'find ./ -follow -type f -name "'$1'" -exec grep -niH "'$2'" {} \;'
+              find ./ -follow -type f -name  "$1"  -exec grep -niH  "$2" {} \;
+
+    # 1 args
+    elif [ $# -eq 1 ]
+    then
+        echo 'find ./ -follow -type f -name "*.*" -exec grep -niH "'$1'" {} \;'
+              find ./ -follow -type f -name "*.*" -exec grep -niH  "$1" {} \;
+
+    # no args
+    else
+        echo 'find ARG1 -follow -type f -name "ARG2" -exec grep -niH "'ARG3'" {} \;'
+    fi
+}
+
+function fblade {
+    echo "find resources/views/ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -name \"*.blade.php\" -exec grep -niH \"$1\" {} \;"
+          find resources/views/ -follow -type f -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*"   -name  "*.blade.php"  -exec grep -niH  "$1" {} \;
+}
+function fphp {
+    echo "find ./ -follow -type f -not -path \"./vendor/*\" -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -name \"*.php\" -exec grep -niH \"$1\" {} \;"
+          find ./ -follow -type f -not -path "./vendor/*"   -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*" -name  "*.php"  -exec grep -niH  "$1" {} \;
+}
+function fphpapp {
+    echo "find app/ -follow -type f -not -path \"./vendor/*\" -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -name \"*.php\" -exec grep -niH \"$1\" {} \;"
+          find app/ -follow -type f -not -path "./vendor/*"   -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*" -name  "*.php"  -exec grep -niH  "$1" {} \;
+}
+function fjs {
+    echo "find ./ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -not -path \"./.dist/*\" -name \"*.js\" -exec grep -niH \"$1\" {} \;"
+          find ./ -follow -type f -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*"   -not -path "./.dist/*"   -name  "*.js"  -exec grep -niH  "$1" {} \;
+}
+function fscss {
+    echo "find ./ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -not -path \"./.dist/*\" -name \"*.scss\" -exec grep -niH \"$1\" {} \;"
+          find ./ -follow -type f -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*"   -not -path "./.dist/*"   -name  "*.scss"  -exec grep -niH  "$1" {} \;
+}
+function fvue {
+    echo "find ./ -follow -type f -not -path \"./public/*\" -not -path \"./storage/*\" -not -path \"./node_modules/*\" -not -path \"./vendor/*\" -not -path \"./.dist/*\" -name \"*.vue\" -exec grep -niH \"$1\" {} \;"
+          find ./ -follow -type f -not -path "./public/*"   -not -path  "./storage/*"  -not -path "./node_modules/*"   -not -path "./vendor/*"   -not -path "./.dist/*"   -name  "*.vue"  -exec grep -niH  "$1" {} \;
+}
+
+
+function cmd() {
+    date > /tmp/cmd_date && $1 && cat /tmp/cmd_date && date
+}
+
+function dropalltables() {
+    if [ $# -eq 5 ]
+    then
+        echo "mysqldump -u$1 -p$2 -h$3 --add-drop-table --no-data $4 | grep -e '^DROP \| FOREIGN_KEY_CHECKS' | tee $5"
+        mysqldump -u$1 -p$2 -h$3 --add-drop-table --no-data $4 | grep -e '^DROP \| FOREIGN_KEY_CHECKS' | tee $5
+    else
+        echo "5 Args : bdd_user bdd_pwd bdd_host bdd_db export_file"
+    fi
+}
+
+alias cls="colorls"
+alias cll="colorls -1"
+alias clsr="colorls -r"
+
+
+# Conversion d'un fichier .md en .pdf
+# md_to_pdf monfichier
+# => monfichier.md ==> monfichier.pdf
+#
+# what to install ?
+#   sudo apt install pandoc
+#   sudo apt-get install texlive-latex-base
+#   sudo apt-get install texlive-fonts-recommended
+#   sudo apt-get install texlive-fonts-extra
+#   sudo apt-get install texlive-latex-extra
+# 
+function md_to_pdf() {
+    # 2 args
+    if [ $# -eq 2 ]
+    then
+        echo "pandoc $1 -o $2"
+        pandoc $1 -o $2
+
+    # 1 args
+    elif [ $# -eq 1 ]
+    then
+        echo "pandoc $1.md -o $1.pdf"
+        pandoc $1.md -o $1.pdf
+
+    fi
+}
+
+# grep recursif
+function grr() {
+
+    # 3 args
+    if [ $# -eq 3 ]
+    then
+        grep --include=\$2 -rl "$3" $1
+
+    # 2 args
+    elif [ $# -eq 2 ]
+    then
+        grep --include=\$1 -rl "$2"
+
+    # 1 args
+    elif [ $# -eq 1 ]
+    then
+        grep --include=\*.* -rl "$1"
+
+    fi
+}
+
+
+extract () {
+    if [ -f $1 ]
+    then
+        case $1 in
+            (.7z) 7z x $1 ;;
+            (.lzma) unlzma $1 ;;
+            (.rar) unrar x $1 ;;
+            (.tar) tar xvf $1 ;;
+            (.tar.bz2) tar xvjf $1 ;;
+            (.bz2) bunzip2 $1 ;;
+            (.tar.gz) tar xvzf $1 ;;
+            (.gz) gunzip $1 ;;
+            (.tar.xz) tar Jxvf $1 ;;
+            (.xz) xz -d $1 ;;
+            (.tbz2) tar xvjf $1 ;;
+            (.tgz) tar xvzf $1 ;;
+            (.zip) unzip $1 ;;
+            (.Z) uncompress ;;
+            (*) echo "don't know how to extract '$1'..." ;;
+        esac
+    else
+        echo "Error: '$1' is not a valid file!"
+        exit 0
+    fi
+}
+
+alias dirsize="du -sh ./* | sort -h"
+
+# Matrix with kanji
+# sudo curl -L https://raw.githubusercontent.com/will8211/unimatrix/master/unimatrix.py -o /usr/local/bin/unimatrix
+# sudo chmod a+rx /usr/local/bin/unimatrix
+alias matrice="unimatrix -s 95"
+
+
+alias batall="upower -d"
+alias batmouse="upower -i /org/freedesktop/UPower/devices/mouse_dev_FE_E6_25_15_A4_1D"
+alias batmousepc="upower -i /org/freedesktop/UPower/devices/mouse_dev_FE_E6_25_15_A4_1D | grep percentage"
